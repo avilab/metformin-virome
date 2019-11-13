@@ -4,6 +4,12 @@
 # Metformin virome
 Snakemake workflow for virome quantitation in Metformin treated T2D patients using assembled metagenomes.
 
+## PRJNA361402
+PRJNA361402 [[1]](#1) data was analysed separately.
+
+## PRJEB1786 data
+
+
 # Setup environment and install prerequisites
 
 ## Install miniconda
@@ -166,3 +172,7 @@ For technical reasons, workflow is split into two parts, virome and taxonomy, th
 ![Virome workflow](graph/dag.svg)
 
 Figure 1. **Workflow** graph with test sample split into two (default = 20) subfiles for parallel processing.
+
+# References
+
+<a id="1">[1]</a> H. Wu, E. Esteve, V. Tremaroli, M.T. Khan, R. Caesar, L. Mannerås-Holm, M. Ståhlman, L.M. Olsson, M. Serino, M. Planas-Fèlix, et al. Metformin alters the gut microbiome of individuals with treatment-naive type 2 diabetes, contributing to the therapeutic effects of the drug Nat. Med., 23 (2017), pp. 850-858
