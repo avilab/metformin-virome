@@ -2,17 +2,21 @@
 > Under development!
 
 # Metformin virome
+
 Snakemake workflow for virome quantitation in Metformin treated T2D patients using assembled metagenomes.
 
-## PRJNA361402
+## Bioproject datasets
+
+### PRJNA361402
+
 PRJNA361402 [[1]](#1) data was analysed separately.
 
-## PRJEB1786 data
+### PRJEB1786 data
 
 
-# Setup environment and install prerequisites
+## Setup environment and install prerequisites
 
-## Install miniconda
+### Install miniconda
 
 Download and install miniconda https://conda.io/docs/user-guide/install/index.html.
 In case of Linux, following should work:
@@ -21,7 +25,7 @@ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
-## Install environment
+### Install environment
 
 Create conda environment with **snakemake**. 
 There are two options:
@@ -42,10 +46,10 @@ source activate snakemake
 pip install -e .
 ```
 
-## Setup databases
+### Setup databases
 Together all databases will occupy ~250GB+ from your HD. 
 
-### BLAST databases
+#### BLAST databases
 
 1. Download BLAST version 5 databases
 
@@ -86,7 +90,8 @@ source $HOME/.bashrc
 echo $BLASTDB
 ```
 
-### Download reference genome databases
+#### Download reference genome databases
+
 1. Human reference genome.
 
 First, create a directory for the reference genome sequence file, e.g `mkdir -p $HOME/databases/ref_genomes && cd $HOME/databases/ref_genomes`.
@@ -95,7 +100,6 @@ Then, human refgenome human_g1k_v37.fasta.gz sequences file can be obtained like
 ```
 wget --continue ftp://ftp.ncbi.nlm.nih.gov/1000genomes/ftp/technical/reference/human_g1k_v37.fasta.gz
 ```
-
 2. Bacterial reference genome sequences.
 
 Create a directory for the bacteria reference sequence files.
@@ -114,7 +118,7 @@ echo 'export REF_BACTERIA=$HOME/databases/bacteria_ref_sequence/Bacteria_ref_gen
 source $HOME/.bashrc
 ```
 
-## Install workflow 
+### Install workflow 
 
 Clone this repo and cd to repo
 (Change URL accordingly if using HTTPS)
@@ -124,21 +128,21 @@ git clone git@github.com:avilab/quantify-virome.git
 cd quantify-virome
 ```
 
-## Example
+### Example
 
-### Dry run
+#### Dry run
 
 ```
 snakemake -n
 ```
 
-### Create workflow graph
+#### Create workflow graph
 
 ```
 snakemake -d .test --dag | dot -Tsvg > graph/dag.svg
 ```
 
-### Run workflow
+#### Run workflow
 
 This workflow is designed to run on hpc cluster, e.g. slurm. `cluster.json` configuration file may need some customisation, for example partition name. Memory nad maximum runtime limits are optimised for 20 splits. Number of splits can be specified in `config.yaml` file with n_files option (currently n_files is 2). Installation of software dependencies is taken care by conda and singularity, hence there is software installation overhead when you run this workflow for the first time in new environment. 
 
@@ -159,20 +163,21 @@ You may want to use also following flags when running this workflow in cluster:
 
 All other possible [snakemake execution](https://snakemake.readthedocs.io/en/stable/executable.html) options can be printed by calling `snakemake -h`.
 
-## Exit/deactivate environment
+### Exit/deactivate environment
 
 Conda environment can be closed with the following command when work is finished:
 ```
 source deactivate
 ```
 
-## Workflow graph
+### Workflow graph
+
 For technical reasons, workflow is split into two parts, virome and taxonomy, that can be run separately, but taxonomy depends on the output of virome. Virome subworkflow (virome.snakefile) munges, masks, and blasts input sequences. Taxonomy subworkflow (Snakefile) merges blast results with taxonomy data and generates report.
 
 ![Virome workflow](graph/dag.svg)
 
 Figure 1. **Workflow** graph with test sample split into two (default = 20) subfiles for parallel processing.
 
-# References
+## References
 
 <a id="1">[1]</a> H. Wu, E. Esteve, V. Tremaroli, M.T. Khan, R. Caesar, L. Mannerås-Holm, M. Ståhlman, L.M. Olsson, M. Serino, M. Planas-Fèlix, et al. Metformin alters the gut microbiome of individuals with treatment-naive type 2 diabetes, contributing to the therapeutic effects of the drug Nat. Med., 23 (2017), pp. 850-858
