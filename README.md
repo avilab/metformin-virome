@@ -7,12 +7,17 @@ Snakemake workflow for virome quantitation in Metformin treated T2D patients usi
 
 ## Bioproject datasets
 
-### PRJNA361402
+### PRJNA361402 data
 
-PRJNA361402 [[1]](#1) data was analysed separately.
+PRJNA361402 [[1]](#1) data was analysed separately, 40 T2D patients from Spain.
 
 ### PRJEB1786 data
 
+PRJEB1786 gut metagenome in European women with normal, impaired and diabetic glucose control data [[2]](#2) and [[3]](#3). Faecal metagenome of 53 T2D patients and 43 subjects with normal glucose tolerance (NGT) from Sweden. All study participants were female. 70-year-old women were included if they had T2D, IGT or NGT. Exclusion criteria were chronic inflammatory disease and treatment with antibiotics during the preceding 3 months. An average of 3.1 +/- 1.8 Gb of PE reads for each sample.
+
+### PRJEB5224 data
+
+PRJEB5224 data [[4]](#4) gut microbiome of 75 T2D patients from Denmark.
 
 ## Setup environment and install prerequisites
 
@@ -180,4 +185,9 @@ Figure 1. **Workflow** graph with test sample split into two (default = 20) subf
 
 ## References
 
-<a id="1">[1]</a> H. Wu, E. Esteve, V. Tremaroli, M.T. Khan, R. Caesar, L. Mannerås-Holm, M. Ståhlman, L.M. Olsson, M. Serino, M. Planas-Fèlix, et al. Metformin alters the gut microbiome of individuals with treatment-naive type 2 diabetes, contributing to the therapeutic effects of the drug Nat. Med., 23 (2017), pp. 850-858
+<a id="1">[1]</a> H. Wu, E. Esteve, V. Tremaroli, M.T. Khan, R. Caesar, L. Mannerås-Holm, M. Ståhlman, L.M. Olsson, M. Serino, M. Planas-Fèlix, et al. Metformin alters the gut microbiome of individuals with treatment-naive type 2 diabetes, contributing to the therapeutic effects of the drug. Nat. Med., 23 (2017), pp. 850-858.
+
+<a id="2">[2]</a> F.H. Karlsson, V. Tremaroli, I. Nookaew, G. Bergström, C.J. Behre, B. Fagerberg, J. Nielsen, F. Bäckhed Gut metagenome in European women with normal, impaired and diabetic glucose control. Nature, 498 (2013), pp. 99-103.
+
+<a id="3">[3]</a> K. Forslund, F. Hildebrand, T. Nielsen, G. Falony, E. Le Chatelier, S. Sunagawa, E. Prifti, S. Vieira-Silva, V. Gudmundsdottir, H.K. Pedersen, et al., MetaHIT consortium Disentangling type 2 diabetes and metformin treatment signatures in the human gut microbiota. Nature, 528 (2015), pp. 262-266.
+<a id="4">[4]</a> E. Le Chatelier, T. Nielsen, J. Qin, E. Prifti, F. Hildebrand, G. Falony, M. Almeida, M. Arumugam, J.M. Batto, S. Kennedy, et al., MetaHIT consortium. Richness of human gut microbiome correlates with metabolic markers. Nature, 500 (2013), pp. 541-546
