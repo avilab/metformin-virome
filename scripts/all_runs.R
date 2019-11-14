@@ -15,6 +15,7 @@ runs %>%
   mutate(sample_name = case_when(
     study_accession == "PRJEB1786" ~ sample_title,
     TRUE ~ sample_alias
-  )) %>% 
+  ),
+  sample_name = str_replace(sample_name, "MetaHIT-", "")) %>% 
   select(study_accession, sample_accession, sample_name, run_accession, read_count, fastq_ftp) %>% 
   write_csv(here("output/all_runs.csv"))
