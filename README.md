@@ -190,4 +190,5 @@ Figure 1. **Workflow** graph with test sample split into two (default = 20) subf
 <a id="2">[2]</a> F.H. Karlsson, V. Tremaroli, I. Nookaew, G. Bergström, C.J. Behre, B. Fagerberg, J. Nielsen, F. Bäckhed Gut metagenome in European women with normal, impaired and diabetic glucose control. Nature, 498 (2013), pp. 99-103.
 
 <a id="3">[3]</a> K. Forslund, F. Hildebrand, T. Nielsen, G. Falony, E. Le Chatelier, S. Sunagawa, E. Prifti, S. Vieira-Silva, V. Gudmundsdottir, H.K. Pedersen, et al., MetaHIT consortium Disentangling type 2 diabetes and metformin treatment signatures in the human gut microbiota. Nature, 528 (2015), pp. 262-266.
+
 <a id="4">[4]</a> E. Le Chatelier, T. Nielsen, J. Qin, E. Prifti, F. Hildebrand, G. Falony, M. Almeida, M. Arumugam, J.M. Batto, S. Kennedy, et al., MetaHIT consortium. Richness of human gut microbiome correlates with metabolic markers. Nature, 500 (2013), pp. 541-546
