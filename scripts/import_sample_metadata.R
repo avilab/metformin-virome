@@ -4,6 +4,7 @@ library(readxl)
 
 SItableS1_sample_subsets <- read_excel("data/nature15766-s2/SItableS1.xls", sheet = "Sample subsets")
 SItableS1_phenotypes <- read_excel("data/nature15766-s2/SItableS1.xls", sheet = "Phenotypes", na = "NA")
+
 SItableS1_sample_subsets %>% 
   filter(Status %in% c("T2D metformin-", "T2D metformin+")) %>% 
   count(Status) %>% 
@@ -18,6 +19,7 @@ nature15766_t2d <- SItableS1_sample_subsets %>%
 nature12198_s2 <- read_excel("data/nature12198-s2.xlsx", sheet = "Supplementary Table 3", skip = 1) %>% 
   rename(Sample = `Sample ID`, oral_anti_diabetic_medication = `Oral anti-diabetic medication (-, no medication; Met, metformin; Sulph, sulphonylurea)`) %>% 
   select(1:30)
+
 nature12198_s2 %>% 
   filter(Classification == "T2D") %>% 
   select(Sample, Classification, oral_anti_diabetic_medication) %>% 
@@ -48,7 +50,14 @@ t2d_runs %>%
 
 # Runs/samples with more than 15M reads
 t2d_runs %>% 
-  filter(read_count >= 1e7) %>% 
+  filter(read_count >= 1.5e7) %>% 
   count(Status)
 
+t2d_runs %>% 
+  filter(read_count >= 1.5e7) %>% 
+  separate(fastq_ftp, c("fq1", "fq2"), sep = ";") %>% 
+  drop_na() %>% 
+  rename(sample = sample_name, run = run_accession) %>% 
+  write_tsv(here("output/samples.tsv"))
+  
 
