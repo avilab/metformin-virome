@@ -5,12 +5,12 @@ seed: 561837
 # sample - unique sample name
 # run - sequencing run
 # fq1 and fq2 - paths to paired-end fastq file
-samples: samples.tsv
+samples: output/samples.tsv
 remote: False
 
 # Remote FTP credentials
 username: anonymous
-password: your@email.addr
+password: taavi74@ut.ee
 
 # Option to save time by not running blastx
 run_blastx: False
@@ -22,4 +22,4 @@ zenodo:
 
 # Split fasta
 split_fasta:
-    n_files: 2
+    n_files: 20
