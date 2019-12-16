@@ -1,3 +1,5 @@
+.Rhistory
+.test
 *.snakemake
 .vscode
 *logs
