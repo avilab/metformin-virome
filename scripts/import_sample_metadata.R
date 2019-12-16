@@ -73,5 +73,5 @@ t2d_samples %>%
   count()
 
 t2d_samples %>% 
-  write_tsv(here("output/samples.tsv"))
+  write_tsv(here("samples.tsv"))
 
