@@ -1,3 +1,7 @@
 *.snakemake
 .vscode
 *logs
+.Rproj.user
+*Rproj
+*pdf
+data/nature*
