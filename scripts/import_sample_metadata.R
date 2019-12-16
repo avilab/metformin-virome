@@ -8,7 +8,7 @@ SItableS1_phenotypes <- read_excel("data/nature15766-s2/SItableS1.xls", sheet = 
 SItableS1_sample_subsets %>% 
   filter(Status %in% c("T2D metformin-", "T2D metformin+")) %>% 
   count(Status) %>% 
-  knitr::kable(caption = "Number of T2D patiens on metformin treatment.") %>% 
+  knitr::kable(caption = "Number of T2D patiens on metformin treatment.", format = "html") %>% 
   kableExtra::kable_styling()
 
 nature15766_t2d <- SItableS1_sample_subsets %>% 
@@ -35,6 +35,7 @@ nature12198_t2d <- nature12198_s2 %>%
   )) %>% 
   select(sample_name = Sample, Status)
 
+# nature12506 study excluded T2D patients, only BMI data is available.
 t2d_samples <- bind_rows(nature15766_t2d, nature12198_t2d)
 
 all_runs <- read_csv(here("output/all_runs.csv"))
@@ -44,6 +45,7 @@ t2d_runs <- inner_join(t2d_samples, all_runs) %>%
   top_n(1, read_count) %>% 
   distinct() %>% 
   ungroup()
+
 t2d_runs %>% 
   ggplot() +
   geom_histogram(aes(read_count), binwidth = 1e6)
@@ -53,11 +55,23 @@ t2d_runs %>%
   filter(read_count >= 1.5e7) %>% 
   count(Status)
 
-t2d_runs %>% 
-  filter(read_count >= 1.5e7) %>% 
+t2d_samples <- t2d_runs %>% 
+  # filter(read_count >= 1.5e7) %>% 
   separate(fastq_ftp, c("fq1", "fq2"), sep = ";") %>% 
-  drop_na() %>% 
-  rename(sample = sample_name, run = run_accession) %>% 
+  separate(fastq_bytes, c("fq1_bytes", "fq2_bytes"), sep = ";") %>% 
+  mutate_at(vars(ends_with("bytes")), as.numeric) %>% 
+  mutate(GB = (fq1_bytes + fq2_bytes) / 1e9) %>% 
+  select(-fq1_bytes, -fq2_bytes) %>% 
+  rename(sample = sample_name, run = run_accession)
+
+t2d_samples %>% 
+  group_by(study_accession) %>% 
+  summarise_at("GB", sum)
+
+t2d_samples %>% 
+  group_by(study_accession, Status) %>% 
+  count()
+
+t2d_samples %>% 
   write_tsv(here("output/samples.tsv"))
-  
 
