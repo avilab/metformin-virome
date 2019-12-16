@@ -8,6 +8,9 @@ seed: 561837
 samples: output/samples.tsv
 remote: False
 
+# Onsuccess notification email address
+email: tapa741@gmail.com
+
 # Remote FTP credentials
 username: anonymous
 password: taavi74@ut.ee
