@@ -1,0 +1,2 @@
+study_accession	sample_accession	sample_title	sample_alias	run_accession	library_layout	read_count	submitted_bytes	fastq_bytes	fastq_ftp
+PRJNA422434	SAMN00715152	T2D metagenomics	bgi-DOF010	SRR341602	PAIRED	12645541		707338498;729325208	ftp.sra.ebi.ac.uk/vol1/fastq/SRR341/SRR341602/SRR341602_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR341/SRR341602/SRR341602_2.fastq.gz
